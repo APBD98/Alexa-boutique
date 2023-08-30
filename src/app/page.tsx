@@ -2,15 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Lora, Spectral, Quintessential } from "next/font/google"
+import { Spectral, Quintessential } from "next/font/google"
 import Images from '@/utils/imageImporter/imageImporter'
 import Buttons from '@/components/button/Button'
 import { Parallax } from "react-parallax"
 
-const lora = Lora({
-  subsets:['latin'],
-  weight:['400','500','700']
-})
 const spectral = Spectral({
   weight:['300'],
   subsets:['latin']
@@ -31,7 +27,7 @@ export default function Home() {
 
 
   return (
-    <div className={`${lora.className} w-full min-h-[1000px]`}>
+    <div className={`${spectral.className} w-full min-h-[1000px]`}>
       <div className="head w-full min-h-[500px] bg-red-950 pt-28 flex flex-col-reverse items-start p-5 gap-10 sm:items-center lg:flex-row lg:justify-evenly lg:p-0 lg:pt-36">
         <Image 
         src={Images.model1}
@@ -87,7 +83,7 @@ export default function Home() {
         </Parallax>
       </div>
 
-      <div className="min-h-[400px] w-full mt-[100px] grid grid-cols-1 place-items-center lg:grid-cols-2">
+      <div className="min-h-[400px] w-full mt-[100px] grid grid-cols-1 place-items-center lg:grid-cols-2 mb-[100px]">
         <div className="p-5">
           <Image 
           src={Images.cloth}

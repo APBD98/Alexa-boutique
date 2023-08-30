@@ -18,7 +18,7 @@ const Images = {
     model6,
     model11,
     jewelry,
-    cloth
+    cloth,
 }
 
 export default Images
