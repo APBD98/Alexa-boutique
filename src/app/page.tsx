@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
 import { Spectral, Quintessential } from "next/font/google"
 import Images from '@/utils/imageImporter/imageImporter'
 import Buttons from '@/components/button/Button'
@@ -20,6 +19,8 @@ const quintessential = Quintessential({
 
 const image1 =
 "https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80";
+
+
 
 
 
@@ -45,10 +46,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full min-h-[500px] flex flex-col mt-10 p-5 gap-10 sm:items-center lg:flex-row lg:gap-0 lg:items-center lg:justify-evenly">
-        <div className="text-center">
-          <h1 className="text-lg font-semibold mb-2">Fall Collection '20</h1>
-          <p className="text-sm">Discover the pre-fall collectiona arriving now</p>
+      <div className="w-full min-h-[500px] flex flex-col mt-10 p-5 gap-10 sm:items-center lg:flex-row lg:gap-2 lg:items-center lg:justify-evenly">
+        <div className="text-center lg:text-left">
+          <h1 className="text-lg font-semibold mb-2 lg:text-3xl">Fall Collection '20</h1>
+          <p className="text-sm">Discover the pre-fall collectiona arriving now.</p>
           <Buttons
             href="/shop"
             styling="bg-black text-white w-40 h-16"

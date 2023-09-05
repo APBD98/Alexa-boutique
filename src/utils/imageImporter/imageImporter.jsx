@@ -4,6 +4,8 @@ import model3 from '@/assets/img/model3.jpg'
 import model4 from '@/assets/img/model4.jpg'
 import model5 from '@/assets/img/model5.jpg'
 import model6 from '@/assets/img/model6.jpg'
+import model8 from '@/assets/img/model8.jpg'
+import model7 from '@/assets/img/model7.jpg'
 import model11  from '@/assets/img/model11.jpg'
 import jewelry from '@/assets/img/jewelry.jpg'
 import cloth from '@/assets/img/cloth.jpg'
@@ -16,6 +18,8 @@ const Images = {
     model4,
     model5,
     model6,
+    model7,
+    model8,
     model11,
     jewelry,
     cloth,

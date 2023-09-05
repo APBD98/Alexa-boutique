@@ -1,10 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Lora, Inter } from 'next/font/google'
+import { Spectral } from 'next/font/google'
 import Navbar from '@/components/navbar/navbar'
 import Footer from '@/components/footer/footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const spectral = Spectral({ subsets: ['latin'], weight:['300'] })
 
 export const metadata: Metadata = {
   title: 'AzrBoutiqe',
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={spectral.className} suppressHydrationWarning={true}>
         <Navbar/>
         {children}
         <Footer/>
