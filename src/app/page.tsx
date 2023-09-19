@@ -94,7 +94,7 @@ export default function Home() {
           <h1 className="pt-10 text-2xl ">Clothing</h1>
           <p className="pt-3 text-sm text-gray-500">Discover the pieces that complete your wardrobe.</p>
           <Buttons
-            href="/"
+            href="/shop"
             styling="bg-black text-white w-44 h-16"
             title="Shop clothing"
           />
@@ -109,7 +109,7 @@ export default function Home() {
           <h1 className="pt-10 text-2xl">Accessories</h1>
           <p className="pt-3 text-sm text-gray-500">No look is complete without there beautiful accessories.</p>
           <Buttons
-            href="/"
+            href="/shop"
             styling='text-white bg-black w-52 h-16'
             title="Shop accessories"
           />

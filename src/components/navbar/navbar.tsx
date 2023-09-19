@@ -5,13 +5,19 @@ import { Lora } from 'next/font/google'
 import {AiOutlineShopping} from 'react-icons/ai'
 import React, { useState } from 'react'
 import Hamburger from '@/components/hamburger/hamburger'
+import Cart from '../cart/cart'
 
 const lora = Lora({subsets:['latin'], weight:['400','500', '600']})
 
 export default function Navbar() {
     const [opened, setOpened] = useState(false);
+    const [cart, setCart] = useState(false)
     const hamburgerMenu = () => {
         setOpened((prev) => !prev)
+    }
+
+    const showCart = () => {
+        setCart(true)
     }
   return (
     <div className='overflow-x-hidden'>
@@ -36,11 +42,18 @@ export default function Navbar() {
                 </ul>
             </div>
 
-            <Link href='/' className='flex items-center gap-2 z-10 relative lg:static'>
+            <div className='flex items-center gap-2 z-10 relative lg:static cursor-pointer'
+            onClick={showCart}>
                 <AiOutlineShopping/>
                 <h1>Shopping bag</h1>
-            </Link>
+            </div>
             
+            
+        </div>
+        <div>
+            <Cart
+             styling={cart}
+             closeCart={() => setCart(false)}   />
         </div>
     </div>
   )
