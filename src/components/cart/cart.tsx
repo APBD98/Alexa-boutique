@@ -36,6 +36,7 @@ interface CartEntry {
 function Cart(props:Props) {
   const {data: session} = useSession()
   const [loading, setLoading] = useState(true);
+  const [totalPayment, setTotalPayment] = useState(0)
   const cartList:any = useCartStore((state:any) => state.cartList)
   const setCartList = useCartStore((state:any) => state.setCartList);
 
@@ -61,6 +62,7 @@ function Cart(props:Props) {
         }
       }
 
+
       setCartList(productDetails);
       setLoading(false);
     } catch (error) {
@@ -68,16 +70,26 @@ function Cart(props:Props) {
       console.error(error);
     }
   }
-  if(session){
-    fetchData()
-  }
-  // useEffect(() => {
-  //   if(session){
-  //     fetchData();
-  //   }
-  // }, [session, setCartList, cartList]);
 
-  //console.log(cartList)
+
+  const totalCount = () => {
+    let sum = 0;
+    if(cartList){
+      cartList.forEach((item:any) => {
+        let perItem = item.price * item.quantity
+        sum+=perItem
+      });
+    }
+    setTotalPayment(sum)
+
+  }
+  
+  useEffect(() => {
+    if(session){
+      fetchData();
+      totalCount()
+    }
+  }, [session, setCartList, cartList, totalPayment]);
 
 
 
@@ -125,7 +137,7 @@ function Cart(props:Props) {
         <div className='flex justify-evenly items-center w-full h-28 absolute bottom-0'>
           <div>
             <h1>Total Amount:</h1>
-            <p>$1000</p>
+            <p>${totalPayment}</p>
           </div>
           <div className='w-28 h-11 bg-red-900 text-center pt-2 rounded-xl'>
             <button>Payment</button>

@@ -2,7 +2,7 @@
 import './navbar.css'
 import Link from 'next/link'
 import { Lora } from 'next/font/google'
-import {AiOutlineShopping} from 'react-icons/ai'
+import {AiOutlineShopping, AiOutlineArrowDown} from 'react-icons/ai'
 import React, { useState } from 'react'
 import Hamburger from '@/components/hamburger/hamburger'
 import Cart from '../cart/cart'
@@ -46,8 +46,7 @@ export default function Navbar() {
             onClick={showCart}>
                 <AiOutlineShopping/>
                 <h1>Shopping bag</h1>
-            </div>
-            
+            </div>          
             
         </div>
         <div>
