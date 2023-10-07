@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import {AiOutlineClose, AiFillDelete} from 'react-icons/ai'
 import  { FetchProduct } from './fetchProduct'
 import Image from 'next/image'
+import Link from 'next/link'
 import  { useCartStore } from '@/config/store/store'
 
 
@@ -43,7 +44,7 @@ function Cart(props:Props) {
   async function fetchData() {
     try {
       // Replace this with your actual usercart endpoint
-      const response = await fetch('https://fakestoreapi.com/carts/user/1');
+      const response = await fetch(`https://fakestoreapi.com/carts/user/${session?.user.id}`);
       const userCart: CartEntry[] = await response.json();
       const theSameProduct: Record<number, boolean> = {};
       const productDetails: CartItem[] = [];
@@ -91,8 +92,6 @@ function Cart(props:Props) {
     }
   }, [session, setCartList, cartList, totalPayment]);
 
-
-
   
   
   return (
@@ -104,7 +103,7 @@ function Cart(props:Props) {
         session? (
           <>
           <div className='mt-24'>
-            <h1>Hei {session.user.name},</h1>
+            <h1>Hei {session.user.name.firstname},</h1>
             <p>Ready to Checkout?</p>
           </div>
         <div className='mt-10 flex flex-col justify-start items-start gap-3 w-full h-1/2 overflow-y-scroll'>
@@ -137,18 +136,20 @@ function Cart(props:Props) {
         <div className='flex justify-evenly items-center w-full h-28 absolute bottom-0'>
           <div>
             <h1>Total Amount:</h1>
-            <p>${totalPayment}</p>
+            <p>${totalPayment.toFixed(2)}</p>
           </div>
-          <div className='w-28 h-11 bg-red-900 text-center pt-2 rounded-xl'>
+          <div className='w-28 h-11 bg-red-900 text-center pt-3 rounded-xl'>
             <button>Payment</button>
           </div>
         </div>
         
         </>
         ):
-        ( <>
+        ( 
+        <div className='mt-24'>
           <h1>Not login</h1>
-        </>
+          <Link href={'/api/auth/signin'} className="underline">Sign in</Link>
+        </div>
         )
       }
     </div>

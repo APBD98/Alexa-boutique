@@ -25,7 +25,7 @@ export default function Navbar() {
             
             <div className='flex items-center lg:justify-start gap-10 lg:gap-28 lg:w-1/2'>
                 <Hamburger hamburger={opened} burgerF={hamburgerMenu}/>
-                <Link href='/' className='relative z-10 lg:static'>
+                <Link href='/home' className='relative z-10 lg:static'>
                     <h1 className='text-xl border-b-2 sm:text-2xl'>Alexa</h1>
                     <p className='text-base opacity-60'>Boutique</p>
                 </Link>

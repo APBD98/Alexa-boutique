@@ -26,9 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={spectral.className} suppressHydrationWarning={true}>
         <SessionProvider session={session}>
-          <Navbar/>
+          {/* <Navbar/> */}
           {children}
-          <Footer/>
+          {/* <Footer/> */}
         </SessionProvider>
       </body>
     </html>

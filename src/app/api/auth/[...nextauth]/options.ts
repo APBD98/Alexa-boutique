@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import GithubProvider from 'next-auth/providers/github'
 import  CredentialsProvider  from "next-auth/providers/credentials";
+import getUsers from "./getUsers";
 
 export const options:NextAuthOptions = {
     providers:[
@@ -11,10 +12,10 @@ export const options:NextAuthOptions = {
         CredentialsProvider({
             name: "Credentials",
             credentials:{
-                username: {
-                    label: "username",
+                email: {
+                    label: "email",
                     type: "text",
-                    placeholder:"your username"
+                    placeholder:"your email"
                 },
                 password: {
                     label: "password",
@@ -23,15 +24,28 @@ export const options:NextAuthOptions = {
                 }
             },
             async authorize(credentials){
+                if(!credentials || !credentials.email || !credentials.password) return null
 
-                const user={id:'1', name:'azrai', password:'000'}
-
-                if(credentials?.username === user.name && credentials?.password === user.password){
+                const users= await getUsers()
+                const user = users.find((item:any) => item.email === credentials.email)
+                if(user?.password === credentials.password){
                     return user
-                }else return null
+                }else{
+                    return null
+                }
+
             }
         })
     ],
+
+    pages: {
+        signIn: '/auth/signin',
+        signOut: '/auth/signout',
+        error: '/auth/error', // Error code passed in query string as ?error=
+        verifyRequest: '/auth/verify-request', // (used for check email message)
+        newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+      },
+    
     
     callbacks: {
         jwt({ token, account, user }) {

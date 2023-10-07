@@ -1,7 +1,6 @@
 import Card from "@/components/card/card"
 
 
-
 type data = {
     id:string,
     title:string,

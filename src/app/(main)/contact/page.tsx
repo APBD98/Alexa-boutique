@@ -1,6 +1,5 @@
 
-
-export default function Page() {
+export default async function Page() {
   return (
     <div className='w-full min-h-[300px] pt-[200px] mb-20 text-center p-5'>
         <h1 className='font-semibold text-3xl mb-5'>Customer services inquries</h1>
