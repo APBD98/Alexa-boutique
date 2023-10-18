@@ -39,7 +39,9 @@ function Cart(props:Props) {
   const [loading, setLoading] = useState(true);
   const [totalPayment, setTotalPayment] = useState(0)
   const cartList:any = useCartStore((state:any) => state.cartList)
+  const successLoad:any = useCartStore((state:any) => state.successLoad)
   const setCartList = useCartStore((state:any) => state.setCartList);
+  const setSuccessLoad = useCartStore((state:any) => state.setSuccessLoad)
 
   async function fetchData() {
     try {
@@ -66,6 +68,7 @@ function Cart(props:Props) {
 
       setCartList(productDetails);
       setLoading(false);
+      setSuccessLoad(true)
     } catch (error) {
       // Handle errors
       console.error(error);

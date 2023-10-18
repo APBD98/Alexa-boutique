@@ -20,5 +20,7 @@ interface CartItem {
 
 export const useCartStore = create((set) => ({
   cartList: [],
-  setCartList: (newCartList:any) => set({cartList: newCartList})
+  successLoad:false,
+  setCartList: (newCartList:any) => set(() => ({cartList: newCartList})),
+  setSuccessLoad: (isSucces:boolean) => set(() => ({successLoad:isSucces}))
 }))

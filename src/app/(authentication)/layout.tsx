@@ -5,6 +5,7 @@ interface Layout{
   }
 
 const quin = Quintessential({subsets:['latin'], weight:['400']})
+
 export default function Layout({ children }:Layout) {
     return (
       <div className='w-full h-screen grid grid-cols-1 md:grid-cols-2'>

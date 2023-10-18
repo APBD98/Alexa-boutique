@@ -2,16 +2,19 @@
 import './navbar.css'
 import Link from 'next/link'
 import { Lora } from 'next/font/google'
-import {AiOutlineShopping, AiOutlineArrowDown} from 'react-icons/ai'
+import {AiOutlineShopping, AiOutlineUser} from 'react-icons/ai'
 import React, { useState } from 'react'
 import Hamburger from '@/components/hamburger/hamburger'
 import Cart from '../cart/cart'
+import { useSession } from 'next-auth/react'
 
 const lora = Lora({subsets:['latin'], weight:['400','500', '600']})
 
 export default function Navbar() {
     const [opened, setOpened] = useState(false);
     const [cart, setCart] = useState(false)
+    const [isLogin, setIslogin] = useState(false)
+    const {data:session} = useSession()
     const hamburgerMenu = () => {
         setOpened((prev) => !prev)
     }
@@ -42,11 +45,24 @@ export default function Navbar() {
                 </ul>
             </div>
 
-            <div className='flex items-center gap-2 z-10 relative lg:static cursor-pointer'
-            onClick={showCart}>
-                <AiOutlineShopping/>
-                <h1>Shopping bag</h1>
-            </div>          
+            <div className='flex flex-row items-center justify-center gap-5 md:gap-10'>
+                <div className='flex items-center gap-2 z-10 relative lg:static cursor-pointer'
+                onClick={showCart}>
+                    <AiOutlineShopping/>
+                    <h1>Shopping bag</h1>
+                </div>
+                <div className='relative w-10'>
+                    <div className='pl-3 cursor-pointer' onClick={() => setIslogin((prev) => !prev)}>
+                        <AiOutlineUser/>
+                    </div>
+                    <div className={`absolute top-4 left-0 underline ${isLogin? 'inline' :'hidden'}`}>
+                        {
+                            session? <Link href={'/auth/signout'}>Logout</Link> : <Link href={'/auth/signin'}>Login</Link>
+                        }
+                        
+                    </div>
+                </div>          
+            </div>
             
         </div>
         <div>
