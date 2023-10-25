@@ -42,7 +42,9 @@ export default function page() {
     <div className="w-full h-screen flex flex-col items-center  justify-center">
       <p className="text-red-950">Welcome back, <br /> please login to your account</p>
       <div className="w-[300px] h-96 rounded-xl flex flex-col justify-start items-center gap-4 pt-10">
+        <label className="text-sm opacity-70">email: don@gmail.com</label>
         <input type="text" name="email" id="email" placeholder="Your email" className="w-4/5  h-14 rounded-lg pl-3 border-2 border-red-900" onChange={handleEmail}/>
+        <label className="text-sm opacity-70">password: ewedon</label>
         <input type="password" name="password" id="password" placeholder="your password" className="w-4/5  h-14 rounded-lg pl-3 border-2 border-red-900" onChange={handlePassword}/>
         <button type="submit" className="w-40 h-14 bg-red-900 rounded-md text-white" onClick={onSubmit}>Login</button>
         <Toaster
